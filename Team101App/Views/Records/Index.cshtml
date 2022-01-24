@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Team101App.Models.Record>
+
+@{
+    ViewBag.Title = "Welcome";
+}
+
+<h2>Welcome</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Purpose)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Equipment)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Purpose)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Equipment)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.RecordId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.RecordId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.RecordId })
+            </td>
+        </tr>
+    }
+
+</table>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Click here for Json File" class="btn btn-danger" />
+        </div>
+    </div>
+}
